@@ -44,7 +44,7 @@ export const Nav: React.FC = () => {
                 FPwonderful
               </span>
               <span className="block font-mono-clean text-[10px] uppercase tracking-[0.25em] text-[#ACE1AF]/70">
-                Chicago // Sound & Craft
+                Chicago // Sound & Soul
               </span>
             </div>
           </Link>
