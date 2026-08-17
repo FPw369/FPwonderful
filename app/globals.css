@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #121217;
+    --bg-surface: #1F1F29;
+    --bg-surface-elevated: #262633;
+    --celadon: #ACE1AF;
+    --celadon-glow: rgba(172, 225, 175, 0.25);
+    --olive: #556B2F;
+    --olive-dark: #3B4B20;
+    --papaya: #FF7F50;
+    --gold: #C9A84C;
+    --gold-glow: rgba(201, 168, 76, 0.25);
+    --text-primary: #F9F4F4;
+    --text-muted: rgba(249, 244, 244, 0.65);
+    --text-faint: rgba(249, 244, 244, 0.38);
+    --border-cyber: rgba(172, 225, 175, 0.22);
+    --border-subtle: rgba(249, 244, 244, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-mono, 'Space Mono', monospace, -apple-system, BlinkMacSystemFont);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    selection-background-color: var(--celadon);
+    selection-color: #0E0E12;
+  }
+
+  ::selection {
+    background: #ACE1AF;
+    color: #121217;
+  }
+
+  /* Custom minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #121217;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(172, 225, 175, 0.3);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(172, 225, 175, 0.6);
+  }
+}
+
+/* Typography Utility Classes */
+.font-editorial {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-mono-clean {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+}
+
+/* Glassmorphism & Cyber-Grunge UI elements */
+.glass-panel {
+  background: rgba(31, 31, 41, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(172, 225, 175, 0.16);
+}
+
+.glass-panel-elevated {
+  background: rgba(38, 38, 51, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(172, 225, 175, 0.24);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 20px -4px rgba(172, 225, 175, 0.1);
+}
+
+.cyber-grid-card {
+  background: rgba(22, 22, 30, 0.85);
+  border: 1px solid rgba(172, 225, 175, 0.18);
+  transition: all 0.25s ease-out;
+}
+
+.cyber-grid-card:hover {
+  border-color: rgba(172, 225, 175, 0.45);
+  box-shadow: 0 0 24px -4px rgba(172, 225, 175, 0.18);
+}
+
+/* Glowing Ghost Buttons */
+.ghost-btn {
+  background: transparent;
+  color: #ACE1AF;
+  border: 1px solid rgba(172, 225, 175, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ghost-btn:hover {
+  background: #ACE1AF;
+  color: #121217;
+  border-color: #ACE1AF;
+  box-shadow: 0 0 20px rgba(172, 225, 175, 0.4);
+}
+
+.ghost-btn-papaya {
+  background: transparent;
+  color: #FF7F50;
+  border: 1px solid rgba(255, 127, 80, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ghost-btn-papaya:hover {
+  background: #FF7F50;
+  color: #121217;
+  border-color: #FF7F50;
+  box-shadow: 0 0 20px rgba(255, 127, 80, 0.4);
+}
+
+.ghost-btn-gold {
+  background: transparent;
+  color: #C9A84C;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ghost-btn-gold:hover {
+  background: #C9A84C;
+  color: #121217;
+  border-color: #C9A84C;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+}
+
+/* Subtle CRT Scanline overlay */
+.scanline-layer {
+  background: linear-gradient(
+    rgba(18, 18, 23, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Soft Animations */
+@keyframes subtle-drift {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+.animate-subtle-drift {
+  animation: subtle-drift 10s ease-in-out infinite;
+}
+
+@keyframes glitch-flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  52% { opacity: 0.92; }
+  54% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+.animate-flicker {
+  animation: glitch-flicker 6s infinite;
+}
