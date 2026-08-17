@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Disc, Volume2, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Volume2, Sparkles } from 'lucide-react';
 import { useMiniPlayer } from '@/components/MiniPlayerContext';
 import { DOOMGANG_DISCOGRAPHY } from '@/lib/discography';
 
@@ -12,11 +13,19 @@ export default function HomePage() {
   return (
     <div className="relative z-10">
       {/* 01. HERO SECTION */}
-      <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto py-12 sm:py-20">
+      <section className="min-h-[85vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto py-12 sm:py-20 relative">
         <div className="space-y-8">
-          {/* Subtle Persona Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#ACE1AF]/25 bg-[#1F1F29]/60 backdrop-blur-md text-[11px] font-mono-clean text-[#ACE1AF] tracking-wider">
-            <span className="w-2 h-2 rounded-full bg-[#ACE1AF] animate-pulse" />
+          {/* Subtle Persona Badge with Brand Emblem */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#ACE1AF]/25 bg-[#1F1F29]/60 backdrop-blur-md text-[11px] font-mono-clean text-[#ACE1AF] tracking-wider">
+            <div className="relative w-4 h-4 flex-shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="FP Logo"
+                width={16}
+                height={16}
+                className="w-full h-full object-contain"
+              />
+            </div>
             <span>Chicago, IL // 312 • Recording Artist & Engineer</span>
           </div>
 
@@ -132,15 +141,21 @@ export default function HomePage() {
                 {item.notes}
               </p>
 
-              <div className="pt-2 flex items-center gap-4">
                 <button
                   onClick={() => playTrack(item)}
                   className="ghost-btn px-4 py-2 text-xs flex items-center gap-2"
                 >
-                  <Disc className="w-3.5 h-3.5" />
-                  Stream Record
+                  <div className="relative w-3.5 h-3.5 flex-shrink-0">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Insignia"
+                      width={14}
+                      height={14}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span>Stream Record</span>
                 </button>
-              </div>
             </div>
           ))}
         </div>

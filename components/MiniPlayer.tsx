@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { useMiniPlayer } from './MiniPlayerContext';
-import { Play, Pause, X, Disc, Volume2 } from 'lucide-react';
+import { Play, Pause, X, Volume2 } from 'lucide-react';
 import { audioEngine } from '@/lib/audio';
 
 export const MiniPlayer: React.FC = () => {
@@ -67,12 +68,16 @@ export const MiniPlayer: React.FC = () => {
       <div className="glass-panel-elevated rounded-sm p-3.5 border border-[#ACE1AF]/30 flex items-center justify-between gap-4">
         {/* Track Info & Visualizer */}
         <div className="flex items-center gap-3 overflow-hidden">
-          <div className="relative w-11 h-11 bg-[#121217] border border-[#ACE1AF]/30 rounded-sm flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <Disc
-              className={`w-6 h-6 text-[#ACE1AF] ${
+          <div className="relative w-11 h-11 bg-[#121217] border border-[#ACE1AF]/30 rounded-sm flex items-center justify-center flex-shrink-0 overflow-hidden p-1.5">
+            <Image
+              src="/images/logo.png"
+              alt="Track Art"
+              width={36}
+              height={36}
+              className={`w-full h-full object-contain ${
                 isPlaying ? 'animate-spin' : ''
               }`}
-              style={{ animationDuration: '4s' }}
+              style={{ animationDuration: '6s' }}
             />
           </div>
           <div className="overflow-hidden pr-2">

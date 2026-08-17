@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import { Track } from '@/lib/types';
 import { useMiniPlayer } from './MiniPlayerContext';
-import { Play, ExternalLink, Disc, Sparkles } from 'lucide-react';
+import { Play, ExternalLink, Sparkles } from 'lucide-react';
 
 interface MagneticAlbumProps {
   track: Track;
@@ -81,10 +82,16 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
                 background: `radial-gradient(circle at 30% 30%, ${track.accentColor || '#ACE1AF'} 0%, #121217 70%)`,
               }}
             />
-            <div className="relative z-10 text-center p-4">
-              <Disc
-                className="w-12 h-12 mx-auto text-[#ACE1AF] opacity-80 group-hover:rotate-45 transition-transform duration-700 mb-2"
-              />
+            <div className="relative z-10 text-center p-4 flex flex-col items-center">
+              <div className="relative w-16 h-16 mb-2.5">
+                <Image
+                  src="/images/logo.png"
+                  alt="DOOMgang Insignia"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(172,225,175,0.3)]"
+                />
+              </div>
               <span className="font-mono-clean text-[10px] tracking-widest text-[#F9F4F4]/60 uppercase block">
                 DOOMgang☥
               </span>

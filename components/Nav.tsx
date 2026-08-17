@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Disc3 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -26,9 +27,18 @@ export const Nav: React.FC = () => {
           {/* Logo / Persona Identity */}
           <Link
             href="/"
-            className="group flex items-center gap-2.5 text-left focus:outline-none"
+            className="group flex items-center gap-3.5 text-left focus:outline-none"
           >
-            <Disc3 className="w-5 h-5 text-[#ACE1AF] transition-transform duration-700 group-hover:rotate-180" />
+            <div className="relative w-9 h-9 flex-shrink-0 flex items-center justify-center">
+              <Image
+                src="/images/logo.png"
+                alt="FPwonderful Insignia"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_10px_rgba(172,225,175,0.35)]"
+                priority
+              />
+            </div>
             <div>
               <span className="font-editorial text-2xl font-normal tracking-wide text-[#F9F4F4] group-hover:text-[#ACE1AF] transition-colors">
                 FPwonderful

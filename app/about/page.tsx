@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { User, BookOpen, Quote, Shield, Compass } from 'lucide-react';
+import Image from 'next/image';
+import { BookOpen, Quote, Shield, Compass } from 'lucide-react';
 
 const STARTER_NOTES = [
   {
@@ -41,8 +42,16 @@ export default function AboutPage() {
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-24">
       {/* 01. ABOUT: PERSON BEFORE PRACTICE */}
       <section className="space-y-10 border-b border-[#ACE1AF]/20 pb-16">
-        <div className="flex items-center gap-2 text-[#ACE1AF] font-mono-clean text-xs uppercase tracking-widest">
-          <User className="w-4 h-4" />
+        <div className="flex items-center gap-2.5 text-[#ACE1AF] font-mono-clean text-xs uppercase tracking-widest">
+          <div className="relative w-4 h-4 flex-shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="FP Logo"
+              width={16}
+              height={16}
+              className="w-full h-full object-contain"
+            />
+          </div>
           <span>Chicago, IL // Profile</span>
         </div>
 

@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { DOOMGANG_DISCOGRAPHY, PRODUCTIONS_ARCHIVE } from '@/lib/discography';
 import { MagneticAlbum } from '@/components/MagneticAlbum';
-import { ExternalLink, Layers, Disc3 } from 'lucide-react';
+import { ExternalLink, Layers } from 'lucide-react';
 
 export default function MusicPage() {
   const [activeTab, setActiveTab] = useState<'doomgang' | 'productions'>('doomgang');
@@ -18,8 +19,16 @@ export default function MusicPage() {
     <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-16">
       {/* Intro Header */}
       <section className="space-y-4 border-b border-[#ACE1AF]/20 pb-8">
-        <div className="flex items-center gap-2 text-[#ACE1AF] font-mono-clean text-xs uppercase tracking-widest">
-          <Disc3 className="w-4 h-4 animate-spin" style={{ animationDuration: '6s' }} />
+        <div className="flex items-center gap-2.5 text-[#ACE1AF] font-mono-clean text-xs uppercase tracking-widest">
+          <div className="relative w-4 h-4 flex-shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="DOOMgang Insignia"
+              width={16}
+              height={16}
+              className="w-full h-full object-contain"
+            />
+          </div>
           <span>DOOMgang☥ Digital Archive // Catalog</span>
         </div>
         <h1 className="font-editorial text-5xl sm:text-6xl text-[#F9F4F4] tracking-tight">

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,10 +10,21 @@ export const Footer: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
           {/* Col 1: Identity */}
-          <div className="space-y-3">
-            <span className="font-editorial text-2xl text-[#F9F4F4] tracking-wide block">
-              FPwonderful
-            </span>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="relative w-10 h-10 flex-shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="FPwonderful Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain drop-shadow-[0_0_12px_rgba(172,225,175,0.25)]"
+                />
+              </div>
+              <span className="font-editorial text-2xl text-[#F9F4F4] tracking-wide block">
+                FPwonderful
+              </span>
+            </div>
             <p className="font-mono-clean text-xs leading-relaxed text-[#F9F4F4]/60 max-w-xs">
               Recording artist, producer, and mixing & mastering engineer based in Chicago, IL.
             </p>
