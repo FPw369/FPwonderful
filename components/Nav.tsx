@@ -53,7 +53,7 @@ export const Nav: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
-              const isBeatShop = link.href === '/beat-shop';
+              const isSpecialAccent = link.href === '/beat-shop' || link.href === '/mixing-mastering';
               return (
                 <Link
                   key={link.href}
@@ -61,7 +61,7 @@ export const Nav: React.FC = () => {
                   className={`relative font-mono-clean text-xs tracking-wider transition-all duration-200 py-1 ${
                     isActive
                       ? 'text-[#ACE1AF] font-medium'
-                      : isBeatShop
+                      : isSpecialAccent
                       ? 'text-[#C9A84C] hover:text-[#FF7F50]'
                       : 'text-[#F9F4F4]/70 hover:text-[#F9F4F4]'
                   }`}
@@ -94,6 +94,7 @@ export const Nav: React.FC = () => {
           <nav className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
+              const isSpecialAccent = link.href === '/beat-shop' || link.href === '/mixing-mastering';
               return (
                 <Link
                   key={link.href}
@@ -102,6 +103,8 @@ export const Nav: React.FC = () => {
                   className={`font-mono-clean text-sm tracking-widest py-2 border-b border-[#F9F4F4]/5 transition-colors ${
                     isActive
                       ? 'text-[#ACE1AF] font-bold pl-2 border-l-2 border-l-[#ACE1AF]'
+                      : isSpecialAccent
+                      ? 'text-[#C9A84C] hover:text-[#FF7F50]'
                       : 'text-[#F9F4F4]/80 hover:text-[#ACE1AF]'
                   }`}
                 >
