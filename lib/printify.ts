@@ -42,6 +42,11 @@ export async function getPrintifyShopId(token: string): Promise<string | null> {
     if (!res.ok) return null;
     const shops = await res.json();
     if (Array.isArray(shops) && shops.length > 0) {
+      // Find shop matching 'FPwonderful' or use the first storefront/shop
+      const fpShop = shops.find((s: { title?: string }) =>
+        s.title?.toLowerCase().includes('fpwonderful')
+      );
+      if (fpShop) return fpShop.id.toString();
       return shops[0].id.toString();
     }
     return null;
