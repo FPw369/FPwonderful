@@ -21,6 +21,14 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "images-cdn.printify.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.printify.com",
+      },
+      {
+        protocol: "https",
         hostname: "**.printify.com",
       },
     ],
