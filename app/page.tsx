@@ -53,7 +53,7 @@ export default function HomePage() {
               href="/music"
               className="ghost-btn px-6 py-3 flex items-center gap-2.5 group"
             >
-              <span>Explore the work</span>
+              <span>Explore the music</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
 
