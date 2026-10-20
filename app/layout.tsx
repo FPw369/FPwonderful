@@ -32,7 +32,6 @@ export const metadata: Metadata = {
     'Chicago Music Producer',
     'Mixing Engineer Chicago',
     'Mastering Engineer Chicago',
-    'Analog Mixing',
     'Audio Engineering',
   ],
 };
@@ -44,9 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceMono.variable} ${cormorantGaramond.variable}`}>
-      <body className="bg-[#121217] text-[#F9F4F4] min-h-screen flex flex-col relative selection:bg-[#ACE1AF] selection:text-[#121217]">
+      <body className="bg-[#F8F8F5] text-[#18181F] min-h-screen flex flex-col relative selection:bg-[#D8E8DA] selection:text-[#18181F]">
         <MiniPlayerProvider>
-          {/* Clean Solid Backdrop */}
+          {/* Calm, Daylight Studio Backdrop */}
           <LiminalBackdrop />
 
           {/* Top Header Nav */}
@@ -58,7 +57,7 @@ export default function RootLayout({
           {/* Persistent Mini Player */}
           <MiniPlayer />
 
-          {/* Underground / Grounded Footer */}
+          {/* Grounded Light Footer */}
           <Footer />
         </MiniPlayerProvider>
       </body>

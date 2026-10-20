@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { BookOpen, Quote, Shield, Compass } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 const STARTER_NOTES = [
   {
@@ -39,10 +39,10 @@ const STARTER_NOTES = [
 
 export default function AboutPage() {
   return (
-    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-24">
+    <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-20">
       {/* 01. ABOUT: PERSON BEFORE PRACTICE */}
-      <section className="space-y-10 border-b border-[#ACE1AF]/20 pb-16">
-        <div className="flex items-center gap-2.5 text-[#ACE1AF] font-mono-clean text-xs uppercase tracking-widest">
+      <section className="space-y-8 border-b border-[#E8E8E2] pb-14">
+        <div className="flex items-center gap-2.5 text-[#3B6141] font-mono-clean text-xs uppercase tracking-widest font-semibold">
           <div className="relative w-4 h-4 flex-shrink-0">
             <Image
               src="/images/logo.png"
@@ -55,11 +55,11 @@ export default function AboutPage() {
           <span>Chicago, IL // Profile</span>
         </div>
 
-        <h1 className="font-editorial text-4xl sm:text-6xl text-[#F9F4F4] leading-[1.15]">
-          FPwonderful is a <span className="italic text-[#ACE1AF]">person</span> before it’s a practice.
+        <h1 className="font-editorial text-4xl sm:text-6xl text-[#18181F] leading-[1.14]">
+          FPwonderful is a <span className="italic text-[#3B6141]">person</span> before it’s a practice.
         </h1>
 
-        <div className="font-mono-clean text-sm sm:text-base text-[#F9F4F4]/80 space-y-6 leading-relaxed">
+        <div className="font-mono-clean text-sm sm:text-base text-[#5A5A66] space-y-5 leading-relaxed">
           <p>
             I’m a recording artist, producer, and mixing & mastering engineer based in Chicago.
           </p>
@@ -81,45 +81,45 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="p-6 bg-[#16161E] border-l-2 border-l-[#ACE1AF] rounded-sm font-editorial text-2xl text-[#ACE1AF] italic">
+        <div className="p-6 bg-[#F5FAF6] border-l-3 border-l-[#3B6141] rounded-xs font-editorial text-2xl text-[#18181F] italic shadow-xs">
           &ldquo;This work is about alignment — between sound, mind, and body.&rdquo;
         </div>
       </section>
 
       {/* 02. NOTES FROM THE PRACTICE */}
-      <section className="space-y-12">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-[#C9A84C] font-mono-clean text-xs uppercase tracking-widest">
+      <section className="space-y-10">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-[#9C7A2E] font-mono-clean text-xs uppercase tracking-widest font-semibold">
             <BookOpen className="w-4 h-4" />
             <span>Field Notes // Ongoing Study</span>
           </div>
-          <h2 className="font-editorial text-3xl sm:text-4xl text-[#F9F4F4]">
+          <h2 className="font-editorial text-3xl sm:text-4xl text-[#18181F]">
             Notes from the practice.
           </h2>
-          <p className="font-mono-clean text-xs sm:text-sm text-[#F9F4F4]/70">
+          <p className="font-mono-clean text-xs sm:text-sm text-[#5A5A66]">
             Observations on sound, creativity, health, and balance.
           </p>
         </div>
 
         {/* Notes Grid / Feed */}
-        <div className="space-y-6">
+        <div className="space-y-5">
           {STARTER_NOTES.map((note) => (
             <div
               key={note.id}
-              className="glass-panel p-6 sm:p-8 rounded-sm space-y-3 border border-[#ACE1AF]/15 hover:border-[#ACE1AF]/35 transition-all"
+              className="glass-panel p-6 sm:p-7 rounded-sm space-y-3 border border-[#E2E2DA] hover:border-[#3B6141]/30 transition-all bg-white shadow-xs"
             >
-              <div className="flex items-center justify-between font-mono-clean text-xs text-[#ACE1AF]">
+              <div className="flex items-center justify-between font-mono-clean text-xs text-[#3B6141] font-semibold">
                 <span>{`[ ENTRY // ${note.num} ]`}</span>
-                <span className="text-[10px] uppercase tracking-widest text-[#F9F4F4]/40">
+                <span className="text-[10px] uppercase tracking-widest text-[#7E7E8B]">
                   Ethos
                 </span>
               </div>
 
-              <blockquote className="font-editorial text-2xl sm:text-3xl text-[#F9F4F4] leading-snug">
+              <blockquote className="font-editorial text-2xl sm:text-3xl text-[#18181F] leading-snug">
                 &ldquo;{note.text}&rdquo;
               </blockquote>
 
-              <p className="font-mono-clean text-xs leading-relaxed text-[#F9F4F4]/70 pt-1">
+              <p className="font-mono-clean text-xs leading-relaxed text-[#5A5A66] pt-0.5">
                 {note.context}
               </p>
             </div>

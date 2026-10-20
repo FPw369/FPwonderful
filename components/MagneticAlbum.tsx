@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Track } from '@/lib/types';
 import { useMiniPlayer } from './MiniPlayerContext';
-import { Play, ExternalLink, Sparkles } from 'lucide-react';
+import { Play, ExternalLink } from 'lucide-react';
 
 interface MagneticAlbumProps {
   track: Track;
@@ -23,11 +23,11 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
 
-    // Magnetic pull (max 12px shift + subtle 3D tilt)
-    const moveX = (x / rect.width) * 16;
-    const moveY = (y / rect.height) * 16;
-    const rotateX = -(y / rect.height) * 8;
-    const rotateY = (x / rect.width) * 8;
+    // Magnetic pull (max 10px shift + subtle 3D tilt)
+    const moveX = (x / rect.width) * 12;
+    const moveY = (y / rect.height) * 12;
+    const rotateX = -(y / rect.height) * 6;
+    const rotateY = (x / rect.width) * 6;
 
     setTransformStyle(
       `perspective(800px) translate3d(${moveX}px, ${moveY}px, 0px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
@@ -58,30 +58,23 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
         transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-out',
       }}
     >
-      <div className="glass-panel rounded-sm p-6 sm:p-8 border border-[#ACE1AF]/15 hover:border-[#ACE1AF]/50 transition-all duration-300 relative overflow-hidden">
+      <div className="glass-panel rounded-sm p-6 sm:p-8 border border-[#E2E2DA] hover:border-[#3B6141]/40 transition-all duration-300 relative overflow-hidden bg-white/90 shadow-xs">
         {/* Subtle top-left indicator */}
-        <div className="flex items-center justify-between font-mono-clean text-[11px] text-[#ACE1AF]/80 mb-6 border-b border-[#F9F4F4]/5 pb-3">
+        <div className="flex items-center justify-between font-mono-clean text-[11px] text-[#5B6E38] mb-5 border-b border-[#E8E8E2] pb-3">
           <div className="flex items-center gap-2">
-            <span className="text-[#FF7F50]">{`[0${index + 1}]`}</span>
+            <span className="text-[#D95328] font-bold">{`[0${index + 1}]`}</span>
             <span className="uppercase tracking-widest">{track.category || 'archive'}</span>
           </div>
           <div className="flex items-center gap-3">
             {track.year && <span>{track.year}</span>}
-            {track.duration && <span className="text-[#F9F4F4]/40">{track.duration}</span>}
+            {track.duration && <span className="text-[#7E7E8B]">{track.duration}</span>}
           </div>
         </div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           {/* Album Cover Art / Graphic Node */}
-          <div className="md:col-span-4 relative aspect-square bg-[#0E0E12] border border-[#ACE1AF]/20 rounded-sm overflow-hidden flex items-center justify-center group-hover:shadow-[0_0_30px_rgba(172,225,175,0.15)] transition-shadow">
-            {/* Generative Album Art Canvas / Aesthetic Badge */}
-            <div
-              className="absolute inset-0 opacity-20 transition-opacity group-hover:opacity-35"
-              style={{
-                background: `radial-gradient(circle at 30% 30%, ${track.accentColor || '#ACE1AF'} 0%, #121217 70%)`,
-              }}
-            />
+          <div className="md:col-span-4 relative aspect-square bg-[#F8F8F5] border border-[#E2E2DA] rounded-sm overflow-hidden flex items-center justify-center group-hover:shadow-md transition-shadow">
             <div className="relative z-10 text-center p-4 flex flex-col items-center">
               <div className="relative w-16 h-16 mb-2.5">
                 <Image
@@ -89,31 +82,31 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
                   alt="DOOMgang Insignia"
                   width={64}
                   height={64}
-                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(172,225,175,0.3)]"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <span className="font-mono-clean text-[10px] tracking-widest text-[#F9F4F4]/60 uppercase block">
+              <span className="font-mono-clean text-[10px] tracking-widest text-[#5B6E38] uppercase block font-semibold">
                 DOOMgang☥
               </span>
-              <span className="font-editorial text-sm text-[#ACE1AF] block">
+              <span className="font-editorial text-sm text-[#18181F] block mt-0.5">
                 {track.title}
               </span>
             </div>
           </div>
 
           {/* Album Details & Ethos */}
-          <div className="md:col-span-8 space-y-4">
+          <div className="md:col-span-8 space-y-3.5">
             <div>
-              <h3 className="font-editorial text-2xl sm:text-3xl text-[#F9F4F4] tracking-wide group-hover:text-[#ACE1AF] transition-colors">
+              <h3 className="font-editorial text-2xl sm:text-3xl text-[#18181F] tracking-wide group-hover:text-[#3B6141] transition-colors">
                 {track.title}
               </h3>
-              <p className="font-mono-clean text-xs text-[#ACE1AF]/90 mt-1">
+              <p className="font-mono-clean text-xs text-[#5B6E38] mt-1 font-medium">
                 {track.artist}
               </p>
             </div>
 
             {track.notes && (
-              <p className="font-mono-clean text-xs leading-relaxed text-[#F9F4F4]/70 max-w-xl">
+              <p className="font-mono-clean text-xs leading-relaxed text-[#5A5A66] max-w-xl">
                 {track.notes}
               </p>
             )}
@@ -122,7 +115,7 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => playTrack(track)}
-                className="ghost-btn px-4 py-2 text-xs flex items-center gap-2"
+                className="ghost-btn px-4 py-2 text-xs flex items-center gap-2 rounded-xs cursor-pointer"
               >
                 <Play className="w-3.5 h-3.5 fill-current" />
                 Quick Stream
@@ -133,7 +126,7 @@ export const MagneticAlbum: React.FC<MagneticAlbumProps> = ({ track, index }) =>
                   href={track.bandcampUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="ghost-btn-gold px-4 py-2 text-xs flex items-center gap-1.5"
+                  className="ghost-btn-gold px-4 py-2 text-xs flex items-center gap-1.5 rounded-xs"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Bandcamp

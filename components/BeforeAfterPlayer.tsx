@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Play, Pause, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { Play, Pause, SlidersHorizontal } from 'lucide-react';
 import { audioEngine } from '@/lib/audio';
 
 interface BeforeAfterPlayerProps {
@@ -140,9 +140,9 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
 
         // Dynamic color split based on slider position
         if (x1 < sliderX) {
-          ctx.strokeStyle = '#555566'; // Dim Gray for Unmixed
+          ctx.strokeStyle = '#8E8E98'; // Muted Slate for Unmixed
         } else {
-          ctx.strokeStyle = '#ACE1AF'; // Celadon Glow for Mastered
+          ctx.strokeStyle = '#3B6141'; // Studio Sage for Mastered
         }
         ctx.stroke();
       }
@@ -158,23 +158,23 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
   }, [isPlaying, sliderPos]);
 
   return (
-    <div className="glass-panel rounded-sm p-6 sm:p-8 border border-[#ACE1AF]/20 hover:border-[#ACE1AF]/40 transition-all space-y-6">
+    <div className="glass-panel rounded-sm p-6 sm:p-8 border border-[#E2E2DA] hover:border-[#3B6141]/30 transition-all space-y-5 bg-white shadow-xs">
       {/* Title & Info */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#F9F4F4]/5 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E8E8E2] pb-4">
         <div>
-          <span className="font-mono-clean text-[10px] uppercase tracking-widest text-[#ACE1AF]">
+          <span className="font-mono-clean text-[10px] uppercase tracking-widest text-[#5B6E38] font-semibold">
             {genre}
           </span>
-          <h4 className="font-editorial text-xl sm:text-2xl text-[#F9F4F4] mt-0.5">
+          <h4 className="font-editorial text-2xl text-[#18181F] mt-0.5">
             {title}
           </h4>
         </div>
         <button
           onClick={togglePlayback}
-          className={`flex items-center gap-2 px-5 py-2 rounded-sm font-mono-clean text-xs uppercase tracking-wider transition-all self-start sm:self-auto ${
+          className={`flex items-center gap-2 px-5 py-2 rounded-sm font-mono-clean text-xs uppercase tracking-wider transition-all self-start sm:self-auto cursor-pointer ${
             isPlaying
-              ? 'bg-[#ACE1AF] text-[#121217] shadow-[0_0_20px_rgba(172,225,175,0.4)]'
-              : 'border border-[#ACE1AF]/40 text-[#ACE1AF] hover:bg-[#ACE1AF]/10'
+              ? 'bg-[#3B6141] text-white shadow-xs'
+              : 'border border-[#3B6141]/40 text-[#3B6141] hover:bg-[#3B6141]/10'
           }`}
         >
           {isPlaying ? (
@@ -192,7 +192,7 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
       </div>
 
       {description && (
-        <p className="font-mono-clean text-xs leading-relaxed text-[#F9F4F4]/70">
+        <p className="font-mono-clean text-xs leading-relaxed text-[#5A5A66]">
           {description}
         </p>
       )}
@@ -202,7 +202,7 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
         ref={containerRef}
         onMouseDown={handleMouseDown}
         onTouchMove={handleTouchMove}
-        className="relative h-36 bg-[#0E0E12]/90 rounded-sm border border-[#ACE1AF]/15 cursor-ew-resize select-none overflow-hidden"
+        className="relative h-36 bg-[#F4F4EE] rounded-sm border border-[#E2E2DA] cursor-ew-resize select-none overflow-hidden"
       >
         {/* Background Visualizer Canvas */}
         <canvas
@@ -214,30 +214,30 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
 
         {/* Shading Overlays */}
         <div
-          className="absolute top-0 bottom-0 left-0 bg-[#121217]/50 pointer-events-none transition-all"
+          className="absolute top-0 bottom-0 left-0 bg-[#E8E8E2]/30 pointer-events-none transition-all"
           style={{ width: `${sliderPos * 100}%` }}
         />
         <div
-          className="absolute top-0 bottom-0 right-0 bg-[#ACE1AF]/5 pointer-events-none transition-all"
+          className="absolute top-0 bottom-0 right-0 bg-[#3B6141]/5 pointer-events-none transition-all"
           style={{ width: `${(1 - sliderPos) * 100}%` }}
         />
 
         {/* Draggable Vertical Slider Line */}
         <div
-          className="absolute top-0 bottom-0 w-[2px] bg-[#ACE1AF] shadow-[0_0_15px_#ACE1AF] pointer-events-none"
+          className="absolute top-0 bottom-0 w-[2px] bg-[#3B6141] shadow-xs pointer-events-none"
           style={{ left: `${sliderPos * 100}%` }}
         >
-          {/* Neon Handle with icon */}
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#121217] border-2 border-[#ACE1AF] flex items-center justify-center shadow-[0_0_12px_#ACE1AF]">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#ACE1AF]" />
+          {/* Handle with icon */}
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-white border-2 border-[#3B6141] flex items-center justify-center shadow-md">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#3B6141]" />
           </div>
         </div>
 
         {/* Bottom Corner Labels */}
         <div className="absolute bottom-2.5 left-4 pointer-events-none">
           <span
-            className={`font-mono-clean text-[10px] uppercase tracking-[0.25em] transition-colors ${
-              sliderPos < 0.5 ? 'text-[#F9F4F4] font-bold' : 'text-[#F9F4F4]/40'
+            className={`font-mono-clean text-[10px] uppercase tracking-[0.2em] transition-colors ${
+              sliderPos < 0.5 ? 'text-[#18181F] font-bold' : 'text-[#8E8E98]'
             }`}
           >
             UNMIXED // RAW
@@ -245,8 +245,8 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
         </div>
         <div className="absolute bottom-2.5 right-4 pointer-events-none">
           <span
-            className={`font-mono-clean text-[10px] uppercase tracking-[0.25em] transition-colors ${
-              sliderPos >= 0.5 ? 'text-[#ACE1AF] font-bold shadow-sm' : 'text-[#F9F4F4]/40'
+            className={`font-mono-clean text-[10px] uppercase tracking-[0.2em] transition-colors ${
+              sliderPos >= 0.5 ? 'text-[#3B6141] font-bold' : 'text-[#8E8E98]'
             }`}
           >
             MASTERED // POLISHED
@@ -255,7 +255,7 @@ export const BeforeAfterPlayer: React.FC<BeforeAfterPlayerProps> = ({
 
         {/* Helper Hint */}
         <div className="absolute top-2.5 inset-x-0 text-center pointer-events-none">
-          <span className="font-mono-clean text-[9px] uppercase tracking-widest text-[#F9F4F4]/30">
+          <span className="font-mono-clean text-[9px] uppercase tracking-widest text-[#7E7E8B]">
             ← Drag slider horizontally to crossfade in real time →
           </span>
         </div>
